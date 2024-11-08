@@ -23,5 +23,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:{{ .Values.deployment.imageVesrion}}
+        image: nginx:{{ .Values.deployment.imageVersion }}
+
 
