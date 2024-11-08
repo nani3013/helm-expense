@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nani3013/mysql: {{ .Values.deployment.imageVersion}}
+        image: nani3013/mysql:{{ .Values.deployment.imageVersion }}
 ---
 kind: Service
 apiVersion: v1
