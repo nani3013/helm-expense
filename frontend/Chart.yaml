@@ -1,0 +1,4 @@
+apiversion: v1
+name: frontend
+version: v1 
+description: This chart is manage frontend application
