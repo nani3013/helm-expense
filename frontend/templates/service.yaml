@@ -1,13 +1,16 @@
-apiVersion: autoscaling/v1
-kind: HorizontalPodAutoscaler
-metadata: 
+kind: Service
+apiVersion: v1
+metadata:
   name: frontend
   namespace: expense
 spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: deployment
-    name: frontend
-  mimReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: {{ .Values.hpa.cpuUtilization}} # usually 75
+  type: LoadBalancer
+  selector:
+    app: frontend
+    tier: web
+    project: expense
+  ports:
+  - name: frontend-port
+    protocol: TCP
+    port: 80 # service port
+    targetPort: 80 # container port

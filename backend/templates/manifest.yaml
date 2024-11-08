@@ -32,12 +32,12 @@ spec:
     spec:
       containers:
       - name: backend
-        image: nani3013/backend: {{ .Values.deployment.imageVersion}}
+        image: joindevops/backend:{{ .Values.deployment.imageVersion }}
         resources:
           requests:
             cpu: 100m
             memory: 128Mi
-        # limits is greater than or equal to requests
+          # limits is greater than or equal to requests
           limits:
             cpu: 100m
             memory: 128Mi
@@ -63,14 +63,14 @@ spec:
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
-metadata: 
-  name: backend
-  namespace: expense
+metadata:
+ name: backend
+ namespace: expense
 spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: deployment
-    name: backend
-  mimReplicas: 1
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: {{ .Values.hpa.cpuUtilization}} # usually 75 in real time
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: backend
+ minReplicas: 1
+ maxReplicas: 10
+ targetCPUUtilizationPercentage: {{ .Values.hpa.cpuUtilization }} # usually 75 in real environment
