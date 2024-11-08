@@ -24,5 +24,4 @@ spec:
       containers:
       - name: nginx
         image: nginx:{{ .Values.deployment.imageVesrion}}
----
 
